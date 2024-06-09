@@ -1,7 +1,8 @@
 import React from 'react';
 import Typing from 'react-typing-animation';
-import { Drawing } from 'react-svg-drawing';
+import Lottie from 'react-lottie';
 import { Text } from '@chakra-ui/react';
+import animationData from '../animations/pathDrawing.json';
 
 const AnimatedText = ({ text, animationType, fontColor }) => {
   const renderTypingAnimation = () => (
@@ -11,7 +12,18 @@ const AnimatedText = ({ text, animationType, fontColor }) => {
   );
 
   const renderPathDrawingAnimation = () => (
-    <Drawing path={text} duration={2000} strokeColor={fontColor} />
+    <Lottie 
+      options={{
+        loop: false,
+        autoplay: true, 
+        animationData: animationData,
+        rendererSettings: {
+          preserveAspectRatio: 'xMidYMid slice'
+        }
+      }}
+      height={400}
+      width={400}
+    />
   );
 
   return (
